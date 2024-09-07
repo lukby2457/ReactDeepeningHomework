@@ -1,66 +1,54 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Layout from './components/Layout';
 import Main from './pages/Main';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
-import Profile from './pages/Profile';
+import ProfilePage from './pages/ProfilePage';
 import TestPage from './pages/TestPage';
 import TestResultPage from './pages/TestResultPage';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ProtectedRoute } from './components/ProtectedRoute';
 
 function App() {
   const [user, setUser] = useState(null);
-
-  const publicRoutes = [
-    {
-      path: "/",
-      element: <Main />
-    },
-    {
-      path: "/login",
-      element: <Login setUser={setUser} />
-    },
-    {
-      path: "/signup",
-      element: <SignUp />
-    },
-  ];
-
-  const routesForAuthenticatedOnly = [
-    {
-      path: "",
-      element: <ProtectedRoute user={user} />,
-      children: [
-        {
-          path: "/profile",
-          element: <Profile user={user} setUser={setUser} />
-        },
-        {
-          path: "/test",
-          element: <TestPage user={user} />
-        },
-        {
-          path: "/results",
-          element: <TestResultPage user={user} />
-        }
-      ]
-    }
-  ]
-
-  const router = createBrowserRouter([
-    ...publicRoutes,
-    ...routesForAuthenticatedOnly
-  ])
+  console.log(user);
 
   return (
-    <Layout>
-      <RouterProvider router={router}/>
-    </Layout>
-  )
+    <BrowserRouter>
+      <Layout user={user} setUser={setUser}>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/login" element={<Login setUser={setUser} />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute user={user}>
+                <ProfilePage user={user} setUser={setUser} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/test"
+            element={
+              <ProtectedRoute user={user}>
+                <TestPage user={user} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/results"
+            element={
+              <ProtectedRoute user={user}>
+                <TestResultPage user={user} />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </Layout>
+    </BrowserRouter>
+  );
 }
 
 export default App
