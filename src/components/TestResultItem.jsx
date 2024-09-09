@@ -57,7 +57,7 @@ const TestResultItem = ({ result, user, onUpdate, onDelete }) => {
   };
 
   return (
-    <div className="p-6 bg-gray-300 rounded-lg shadow-lg text-white">
+    <div className="p-6 bg-gray-200 rounded-lg shadow-lg text-white">
       <div className="flex justify-between items-center border-b border-gray-700 pb-3 mb-3">
         <h4 className="text-xl font-semibold text-slate-700">{result.nickname}</h4>
         <p className="text-sm text-slate-700">{formattedDate}</p>
