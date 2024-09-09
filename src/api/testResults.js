@@ -18,5 +18,6 @@ export const deleteTestResult = async (id) => {
 };
 
 export const updateTestResultVisibility = async (id, visibility) => {
-
+  const response = await axios.patch(`${API_URL}/${id}`, { visibility: visibility });
+  return response.data;
 };

@@ -32,7 +32,6 @@ const TestResultItem = ({ result, user, onUpdate, onDelete }) => {
     .map(str => str.trim())
     .filter(str => str !== '')
     .join('');
-  console.log(mbti);
   const description =
     mbtiDescriptions[mbti] || "MBTI 유형 설명을 찾을 수 없습니다.";
 
@@ -58,13 +57,13 @@ const TestResultItem = ({ result, user, onUpdate, onDelete }) => {
   };
 
   return (
-    <div className="p-6 bg-gray-800 rounded-lg shadow-lg text-white">
+    <div className="p-6 bg-gray-300 rounded-lg shadow-lg text-white">
       <div className="flex justify-between items-center border-b border-gray-700 pb-3 mb-3">
-        <h4 className="text-xl font-semibold">{result.nickname}</h4>
-        <p className="text-sm text-gray-400">{formattedDate}</p>
+        <h4 className="text-xl font-semibold text-slate-700">{result.nickname}</h4>
+        <p className="text-sm text-slate-700">{formattedDate}</p>
       </div>
-      <p className="text-2xl font-bold text-yellow-400 mb-4">{result.result}</p>
-      <p className="text-base text-gray-300 mb-4">{description}</p>
+      <p className="text-2xl text-left font-bold text-orange-400 mb-4">{result.result}</p>
+      <p className="text-base text-left text-black mb-4">{description}</p>
       {isOwner && (
         <div className="flex justify-end space-x-4">
           <button

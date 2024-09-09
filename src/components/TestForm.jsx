@@ -16,23 +16,25 @@ const TestForm = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 p-4 bg-gray-100 rounded shadow-md">
+    <form onSubmit={handleSubmit} className="w-full space-y-4 p-4 bg-gray-100 rounded shadow-md">
       {questions.map((q, index) => (
         <div key={q.id} className="mb-4">
           <p className="font-semibold">{q.question}</p>
-          {q.options.map((option, i) => (
-            <label key={i} className="block">
-              <input
-                type="radio"
-                name={`question-${index}`}
-                value={option}
-                checked={answers[index] === option}
-                onChange={() => handleChange(index, option)}
-                className="mr-2"
-              />
-              {option}
-            </label>
-          ))}
+          <div className='flex justify-center'>
+            {q.options.map((option, i) => (
+              <label key={i} className="w-20 block">
+                <input
+                  type="radio"
+                  name={`question-${index}`}
+                  value={option}
+                  checked={answers[index] === option}
+                  onChange={() => handleChange(index, option)}
+                  className="mr-2"
+                />
+                {option}
+              </label>
+            ))}
+          </div>
         </div>
       ))}
       <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">

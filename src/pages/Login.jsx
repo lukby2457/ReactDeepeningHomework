@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import AuthForm from "../components/AuthForm";
 import { login, getUserProfile } from "../api/auth";
 import { Link, useNavigate } from "react-router-dom";
@@ -25,14 +25,14 @@ const Login = ({ setUser }) => {
   };
 
   return (
-    <div>
-      <div>
-        <h1>로그인</h1>
+    <div className="flex justify-center">
+      <div className="w-100 p-5 m-5 shadow-lg rounded-lg">
+        <h1 className="text-3xl font-bold text-primary-color mb-6 text-center">로그인</h1>
         <AuthForm mode="login" onSubmit={handleLogin} />
         <div>
           <p>
             계정이 없으신가요?{" "}
-            <Link to="/signup">
+            <Link to="/signup" className='text-orange-400 hover:text-inherit hover:underline'>
               회원가입
             </Link>
           </p>

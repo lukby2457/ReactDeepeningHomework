@@ -2,14 +2,6 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 const Layout = ({ children, user, setUser }) => {
-  const navigate = useNavigate();
-
-  // 이곳에서 로그인 하지 않은 사용자를 login 페이지로 보내줄 거에요.
-  // useEffect(() => {
-  //   if(!user) {
-
-  //   }
-  // }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("accessToken");
@@ -19,28 +11,28 @@ const Layout = ({ children, user, setUser }) => {
   return (
     <div>
       <header>
-        <nav className='flex space-x-2'>
-          <Link to={"/"}>
+        <nav className='bg-gray-100 min-h-20 flex justify-between items-center p-5'>
+          <Link to={"/"} className='text-orange-400'>
             홈
           </Link>
-          <div>
+          <div className='flex space-x-4 items-center w-70'>
             {user ? (
               <>
-                <Link to={"/profile"}>
+                <Link to={"/profile"} className='text-orange-400'>
                   프로필
                 </Link>
-                <Link to={"/test"}>
+                <Link to={"/test"} className='text-orange-400'>
                   테스트
                 </Link>
-                <Link to={"/results"}>
+                <Link to={"/results"} className='text-orange-400'>
                   결과보기
                 </Link>
-                <button onClick={handleLogout}>
+                <button onClick={handleLogout} className='text-white bg-orange-400 p-2 rounded-md hover:bg-orange-600 transition'>
                   로그아웃
                 </button>
               </>
             ) : (
-              <Link to={"/login"}>
+              <Link to={"/login"} className='text-orange-400'>
                 로그인
               </Link>
             )}

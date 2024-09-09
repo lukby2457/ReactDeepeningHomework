@@ -18,16 +18,16 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      <div>
-        <h1 >
+    <div className="flex justify-center">
+      <div className="w-100 p-5 m-5 shadow-lg rounded-lg">
+        <h1 className="text-3xl font-bold text-primary-color mb-6 text-center">
           회원가입
         </h1>
         <AuthForm mode="signup" onSubmit={handleSignup} />
         <div>
           <p>
             이미 계정이 있으신가요?{" "}
-            <Link to="/login">
+            <Link to="/login" className='text-orange-400 hover:text-inherit hover:underline'>
               로그인
             </Link>
           </p>
