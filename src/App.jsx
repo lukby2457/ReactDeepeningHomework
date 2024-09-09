@@ -19,8 +19,18 @@ function App() {
       <Layout user={user} setUser={setUser}>
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/login" element={<Login setUser={setUser} />} />
-          <Route path="/signup" element={<SignUp />} />
+          <Route 
+            path="/login" 
+            element={
+              <Login setUser={setUser} />
+            } 
+          />
+          <Route 
+            path="/signup" 
+            element={
+              <SignUp />
+            } 
+          />
           <Route
             path="/profile"
             element={
