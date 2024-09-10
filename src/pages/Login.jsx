@@ -3,8 +3,10 @@ import AuthForm from "../components/AuthForm";
 import { login, getUserProfile } from "../api/auth";
 import { Link, useNavigate } from "react-router-dom";
 
-const Login = ({ setUser }) => {
+const Login = ({ user, setUser }) => {
   const navigate = useNavigate();
+
+  if(!!user) navigate("/profile");
 
   const handleLogin = async (formData) => {
     try {

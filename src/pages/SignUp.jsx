@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AuthForm from "../components/AuthForm";
 import { register } from "../api/auth";
 import { Link, useNavigate } from "react-router-dom";
 
-const Signup = () => {
+const Signup = ({ user }) => {
   const navigate = useNavigate();
+
+  if(!!user) navigate("/profile");
 
   const handleSignup = async (formData) => {
     try {
